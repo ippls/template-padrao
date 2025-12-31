@@ -1,0 +1,22 @@
+/* ============================================
+TEMPLATE PADRÃO MVC - IPPLS
+Sistema de CSS Componentizado
+============================================ */
+
+/* Base & Reset */
+@import 'base.css';
+
+/* Componentes */
+@import 'components/navbar.css';
+@import 'components/buttons.css';
+@import 'components/forms.css';
+@import 'components/cards.css';
+@import 'components/tables.css';
+@import 'components/alerts.css';
+@import 'components/docs.css';
+@import 'components/errors.css';
+
+/* Seções */
+@import 'sections/hero.css';
+@import 'sections/skills.css';
+@import 'sections/footer.css';
