@@ -30,6 +30,9 @@ function convertMarkdownToHtml($text) {
     // Blocos de código
     $text = preg_replace_callback('/```(\w+)?\n(.*?)\n```/s', function($m) {
         $lang = $m[1] ?? 'plaintext';
+        // Corrigir linguagens desconhecidas
+        $langMap = ['env' => 'properties', 'dotenv' => 'properties', 'ignore' => 'bash'];
+        $lang = $langMap[$lang] ?? $lang;
         $code = htmlspecialchars($m[2], ENT_QUOTES, 'UTF-8');
         return '<pre><code class="language-' . $lang . '">' . $code . '</code></pre>';
     }, $text);
@@ -370,7 +373,7 @@ function replaceEmojisWithFA(string $html): string {
                         <h4><i class="fas fa-heart"></i> Precisa de ajuda?</h4>
                         <p>Entre em contato com a equipe IPPLS.</p>
                         <div class="docs-footer-links">
-                            <a href="mailto:suporte@ippls.ao">
+                            <a href="mailto:ippls.dev@outlook.co.ao">
                                 <i class="fas fa-envelope"></i> Email
                             </a>
                         </div>
@@ -396,12 +399,23 @@ function replaceEmojisWithFA(string $html): string {
 <script src="assets/js/components/docs.js"></script>
 
 <script>
-// Highlight.js
+// Highlight.js com segurança
 document.addEventListener('DOMContentLoaded', function() {
-    if (window.hljs) {
-        document.querySelectorAll('pre code').forEach(block => {
-            hljs.highlightElement(block);
-        });
-    }
+    if (!window.hljs) return;
+    
+    // Corrigir blocos ANTES do highlight
+    document.querySelectorAll('pre code').forEach(block => {
+        // Escapar HTML
+        const text = block.textContent;
+        block.textContent = text;
+        
+        // Corrigir linguagens
+        block.className = block.className
+            .replace('language-env', 'language-properties')
+            .replace('language-dotenv', 'language-properties')
+            .replace('language-ignore', 'language-bash');
+        
+        hljs.highlightElement(block);
+    });
 });
 </script>
