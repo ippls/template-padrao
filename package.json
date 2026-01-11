@@ -1,0 +1,16 @@
+{
+  "name": "ippls/template-padrao",
+  "version": "1.0.0",
+  "description": "Template Padrão MVC com Composer + Hot Reload - IPPLS",
+  "private": true,
+  "scripts": {
+    "serve": "php -S localhost:8000",
+    "watch": "browser-sync start --proxy localhost:8000 --files \"app/**/*.php, routes/**/*.php, views/**/*.php, assets/css/**/*.css, assets/js/**/*.js, README.md\" --no-notify --port 3000 --no-open",
+    "dev": "concurrently \"npm run serve\" \"npm run watch\"",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "concurrently": "^8.2.2"
+  }
+}
