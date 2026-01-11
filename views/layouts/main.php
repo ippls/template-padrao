@@ -8,7 +8,7 @@
     <!-- Arquivo de importação dos Componentes CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Fonteawesome para icones -->
-    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 </head>
 <body>
     <!-- Barra de navegação (Menu) -->
