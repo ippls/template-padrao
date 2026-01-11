@@ -1,6 +1,6 @@
 {
     "name": "ippls/template-padrao",
-    "description": "Template Padrão MVC com Composer - IPPLS",
+    "description": "Template Padrão MVC com Composer + Hot Reload - IPPLS",
     "type": "project",
     "license": "MIT",
     "require": {
@@ -18,5 +18,8 @@
     },
     "config": {
         "optimize-autoloader": true
+    },
+    "scripts":{
+        "env-setup":"php scripts/env-setup.php"
     }
 }
